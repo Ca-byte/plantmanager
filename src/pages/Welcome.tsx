@@ -1,51 +1,86 @@
 import React from 'react';
-import { Text, Image, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { 
+    Text, 
+    Image, 
+    TouchableOpacity, 
+    StyleSheet, 
+    SafeAreaView, 
+    Dimensions, View } from 'react-native';
+
+    import {Feather} from '@expo/vector-icons';
+  
 
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
+import fonts from "../styles/fonts";
+import { useNavigation } from '@react-navigation/core';
+
+
 
 
 export function Welcome(){
+    const navigation = useNavigation();
+
+    function handleStart(){
+        navigation.navigate('UserIndentification');
+
+    }
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>
-                Manage{'\n'}
-                your plants {'\n'}
-                the easy way {'\n'}
-            </Text>
+            <View style={styles.wrapper}>
+                <Text style={styles.title}>
+                    Manage{'\n'}
+                    your plants the {'\n'}
+                    easy way {'\n'}
+                </Text>
 
-            <Image 
-            source={wateringImg} 
-            style={styles.image} 
-            />
+                <Image 
+                source={wateringImg} 
+                style={styles.image}
+                resizeMode="contain"
+                />
 
-            <Text style={styles.subtitle}>
-                 Don't forget to water your plants anymore.{'\n'}
-                 We take care to remember you whenever{'\n'} you need.
-            </Text>
-            <TouchableOpacity style={styles.button} 
-                activeOpacity={0.7}>
-                <Text style={styles.buttonText}>
-                    &gt;
+                <Text style={styles.subtitle}>
+                    Don't forget to water your plants anymore.{'\n'}
+                    We take care to remember you {'\n'}whenever you need.
+                </Text>
+                <TouchableOpacity 
+                onPress={handleStart}
+                    style={styles.button} 
+                    activeOpacity={0.7}
+                >
+                    <Text>
+                    <Feather name="chevron-right"
+                            style={styles.buttonIcon}
+                    />
                     </Text>
-            </TouchableOpacity>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        
+    },
+    wrapper: {
+        flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
+        paddingHorizontal: 20,
+
     },
     title: {
-        fontSize: 32,
+        fontSize: 28,
         fontWeight: 'bold',
         textAlign: 'center',
         color: colors.heading,
         marginTop: 38,
+        fontFamily: fonts.heading,
+        lineHeight: 30
       
     },
     subtitle: {
@@ -53,6 +88,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         paddingHorizontal: 20,
         color: colors.heading,
+        fontFamily: fonts.text ,
 
     },
     button: {
@@ -65,15 +101,15 @@ const styles = StyleSheet.create({
         width: 56,
 
     },
-    buttonText: {
-
+    buttonIcon: {
+        fontSize: 34,
         color: colors.white,
-        fontSize: 24,
+        
+
     },
 
     image: {
-        width: 292,
-        height: 284,
+        height: Dimensions.get('window').width * 0.7
     }
 
 });
