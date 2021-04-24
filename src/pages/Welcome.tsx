@@ -32,8 +32,8 @@ export function Welcome() {
             <View style={styles.wrapper}>
                 <Text style={styles.title}>
                     Manage{'\n'}
-                    your plants the {'\n'}
-                    easy way {'\n'}
+                    your plants is {'\n'}
+                    Easy Peasy now! {'\n'}
                 </Text>
 
                 <Image

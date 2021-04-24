@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
 import {
-    View, 
-    Text, 
+    View,
+    Text,
     StyleSheet,
     SafeAreaView
 } from 'react-native';
@@ -17,13 +17,13 @@ import fonts from '../styles/fonts';
 export function ConfirmationScreen() {
     const navigation = useNavigation();
 
-    function handleStart(){
+    function handleStart() {
         navigation.navigate('PlantSelect');
 
     }
 
-  
-    return(
+
+    return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <Text style={styles.emoji}>
@@ -34,35 +34,34 @@ export function ConfirmationScreen() {
                     That's it!
                 </Text>
                 <Text style={styles.subtitle}>
-                Now we are going to start taking care {'\n'} of your plants, give them some love.
-                
+                    We are going to start taking care of your{'\n'} plants let's give them some love now.
                 </Text>
 
                 <View style={styles.footer}>
-                <Button title="Start" onPress={handleStart} />
+                    <Button title="Start" onPress={handleStart} />
+
+                </View>
 
             </View>
 
-            </View>
-           
 
         </SafeAreaView>
-       
 
 
-     
+
+
 
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
 
     },
-    title:{
+    title: {
         fontSize: 22,
         fontFamily: fonts.heading,
         textAlign: 'center',
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
 
 
     },
-    subtitle:{
+    subtitle: {
         fontFamily: fonts.text,
         alignItems: 'center',
         fontSize: 17,
@@ -80,20 +79,20 @@ const styles = StyleSheet.create({
         color: color.heading,
 
     },
-    content:{
+    content: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        width:'100%',
+        width: '100%',
         padding: 30,
 
     },
-    emoji:{
+    emoji: {
         fontSize: 76,
-    
+
     },
-    footer:{
-        width:'100%',
+    footer: {
+        width: '100%',
         paddingHorizontal: 40,
         marginTop: 30
 
