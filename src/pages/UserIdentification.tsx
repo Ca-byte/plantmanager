@@ -8,21 +8,19 @@ import {
     KeyboardAvoidingView,
     Platform,
     TouchableWithoutFeedback,
-    Keyboard
+    Keyboard,
+    Alert
 } from 'react-native';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { Button } from '../components/Button'
 import { useNavigation } from '@react-navigation/core';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 export function UserIndentification(){
     const navigation = useNavigation();
-
-    function handleSubmit(){
-        navigation.navigate('ConfirmationScreen');
-
-    }
-
     const [isFocused, setIsFocused] =useState(false);
     const [isFilled, setIsFilled] =useState(false);
 
@@ -41,6 +39,26 @@ export function UserIndentification(){
     function handleInputChange(value: string){
         setIsFilled(!!value);
         setName(value);
+    }
+
+    async function handleSubmit(){
+        if(!name)
+            return Alert.alert('Lets be friends... tell me your name 😊');
+
+        try{
+            await AsyncStorage.setItem('@plantmanager:user', name);
+            navigation.navigate('ConfirmationScreen',{
+                title: ' Here you go!',
+                subtitle: " We are going to start taking care of your plants let's give them some love now!",
+                buttonTitle:'Start',
+                icon: 'blink',
+                nextScreen: 'PlantSelect',
+            });
+
+        }catch{
+            Alert.alert('Sorry, I could not get your name 😢');
+
+        }
     }
 
     return (

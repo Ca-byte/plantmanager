@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 import {
     View,
     Text,
@@ -7,18 +7,39 @@ import {
     SafeAreaView
 } from 'react-native';
 import { Button } from '../components/Button';
-import colors from '../styles/colors';
 
-import color from "../styles/colors";
+import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+
+interface Params {
+    title: string;
+    subtitle: string;
+    buttonTitle: string;
+    icon: 'blink' | 'leaf',
+    nextScreen: string;
+}
+const emojis = {
+    leaf: '🍁',
+    blink: '😉'
+}
 
 
 
 export function ConfirmationScreen() {
     const navigation = useNavigation();
+    const routes = useRoute();
+
+    const {
+        title,
+        subtitle,
+        buttonTitle,
+        icon,
+        nextScreen,
+
+    } = routes.params as Params;
 
     function handleStart() {
-        navigation.navigate('PlantSelect');
+        navigation.navigate(nextScreen);
 
     }
 
@@ -27,18 +48,18 @@ export function ConfirmationScreen() {
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <Text style={styles.emoji}>
-                    😉
+                    {emojis[icon]}
 
                 </Text>
                 <Text style={styles.title}>
-                    That's it!
+                   {title}
                 </Text>
                 <Text style={styles.subtitle}>
-                    We are going to start taking care of your{'\n'} plants let's give them some love now.
+                   {subtitle}
                 </Text>
 
                 <View style={styles.footer}>
-                    <Button title="Start" onPress={handleStart} />
+                    <Button title={buttonTitle} onPress={handleStart} />
 
                 </View>
 
@@ -73,10 +94,10 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         fontFamily: fonts.text,
-        alignItems: 'center',
-        fontSize: 17,
+        textAlign: 'center',
+        fontSize: 18,
         paddingVertical: 10,
-        color: color.heading,
+        color: colors.heading,
 
     },
     content: {
