@@ -30,17 +30,17 @@ export function MyPlants() {
     function handleRemove(plant: PlantsProps) {
         Alert.alert("Remove", `Are you sure about to delet ${plant.name}?`,[
             {
-                text: 'No 😇 ',
-                style: 'cancel'
+                text: "No 😇 ",
+                style: "cancel",
             },
             {
-                text: 'Yes 😈',
+                text: "Yes 😈",
                 onPress: async () => {
                     try {
                         await removePlant(plant.id);
                         
                         SetMyPlants((oldData) => 
-                            oldData.filter((item)=> item.id != plant.id)
+                            oldData.filter((item)=> item.id !== plant.id)
 
                         );    
                         
@@ -57,8 +57,10 @@ export function MyPlants() {
     useEffect(() => {
         (async function loadStorageData() {
             const plantsStoraged = await loadPlants();
+
             console.log(plantsStoraged)
-            if(plantsStoraged.length>0){
+
+            if(plantsStoraged.length > 0){
                 const nextTime = formatDistance(
                     new Date(plantsStoraged[0].dateTimeNotification).getTime(),
                     new Date().getTime(),
@@ -70,7 +72,8 @@ export function MyPlants() {
             }else{
                 setNextWatered('You did not select any plant!😢')
             }
-            SetMyPlants(plantsStoraged);
+            
+            SetMyPlants(plantsStoraged)
             setLoading(false);
         })()
 

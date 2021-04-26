@@ -4,7 +4,7 @@ import * as Notifications from 'expo-notifications';
 
 export interface PlantsProps{
 
-    id: string;
+    id: number;
     name: string;
     about: string;
     water_tips: string;
@@ -118,7 +118,7 @@ export async function loadPlants():Promise<PlantsProps[]> {
     }
 }
 
-export async function removePlant(id: string): Promise<void> {
+export async function removePlant(id: number): Promise<void> {
     const data = await AsyncStorage.getItem('@plantmanager:plants');
     const plants = data ? (JSON.parse(data) as StoragePlantProps) : {}
   

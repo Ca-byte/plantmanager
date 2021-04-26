@@ -10,14 +10,14 @@ import { PlantCardPrimary } from '../components/PlantCardPrimary';
 import { EnvironmentButton } from '../components/EnvironmentButton';
 import { Header } from '../components/Header';
 import { Load } from '../components/Load';
+import { useNavigation } from '@react-navigation/core';
+import { PlantsProps } from '../libs/storage';
 
 
 import api from '../services/api';
-
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { useNavigation } from '@react-navigation/core';
-import { PlantsProps } from '../libs/storage';
+
 
 
 
@@ -42,7 +42,8 @@ export function PlantSelect() {
 
     function handleEvironmentSelected(environment: string) {
         setEnvironmentSeleted(environment);
-        if (environment == 'all')
+
+        if (environment === 'all')
             return setFilteredPlants(plants);
 
         const filtered = plants.filter( plant =>
@@ -54,6 +55,7 @@ export function PlantSelect() {
     async function fetchPlants() {
         const { data } = await api
             .get(`plants?_sort=name&_order=asc&_page=${page}&_limit=8`);
+            console.log(fetchPlants)
 
         if (!data)
             return setLoading(true)
@@ -101,12 +103,12 @@ export function PlantSelect() {
 
         }
 
-        fetchEnviroment();
+        fetchEnviroment()
     }, [])
 
     useEffect(() => { 
 
-        fetchPlants()
+        fetchPlants();
     }, [])
 
      if(loading)

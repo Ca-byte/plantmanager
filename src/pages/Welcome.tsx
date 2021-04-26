@@ -25,7 +25,7 @@ export function Welcome() {
     function handleStart() {
         navigation.navigate('UserIndentification');
 
-    }
+    };
 
     return (
         <SafeAreaView style={styles.container}>
