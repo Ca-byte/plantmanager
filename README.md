@@ -31,7 +31,7 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 O Plant Manager veio te dar uma mãozinha com suas babies plantas, com recadinhos para te lembrar a hora certa para você regar com 💚 além de 
  várias dicas sobre quantidade de água, vezes a serem regadas e até o ambiente da casa que elas mais gostam, 
-ficaram curiosos ne´? Dá uma olhadinha no projeto. Com o Plant Manager suas babies serão amadas na medida certa, por que até água de mais mata 😌.
+ficaram curiosos ne´? Dá uma olhadinha no projeto. Com o Plant Manager suas babies serão amadas na medida certa, por que até água demais mata 😌.
 
 Este é um projeto desenvolvido durante a **[Next Level Week](https://nextlevelweek.com/)**, realizada pela **[@Rocketseat](https://github.com/Rocketseat)** durante os dias 19 a 25 de Abril de 2021.
 
