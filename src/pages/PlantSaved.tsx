@@ -6,7 +6,8 @@ import {
     Alert,
     Platform,
     TouchableOpacity,
-    Image
+    Image,
+    ScrollView,
 } from 'react-native';
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
 
@@ -83,63 +84,69 @@ export function PlantSaved(){
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.plantInfo}>
+        <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.container}
 
-                <SvgFromUri
-                    uri={plant.photo}
-                    height={150}
-                    width={150}
+        >
+            <View style={styles.container}>
+                <View style={styles.plantInfo}>
 
-                />
-                <Text style={styles.plantName}>
-                    {plant.name}
+                    <SvgFromUri
+                        uri={plant.photo}
+                        height={150}
+                        width={150}
 
-                </Text>
-                <Text style={styles.plantAbout}>
-                    {plant.about}
-                </Text>
-            </View>
-            <View style={styles.controller}>
-                <View style={styles.tipContainer}>
-                    <Image
-                        source={waterdrop}
-                        style={styles.tipImage}
                     />
-                    <Text style={styles.tipText}>
-                        {plant.water_tips}
+                    <Text style={styles.plantName}>
+                        {plant.name}
+
+                    </Text>
+                    <Text style={styles.plantAbout}>
+                        {plant.about}
                     </Text>
                 </View>
-                <Text style={styles.alertLabel}>
-                    Choose the best time to be remembered:
-                </Text>
-                {showDatePicker && (
-                    <DateTimePicker
-                        value={selectedDateTime}
-                        mode="time"
-                        display="spinner"
-                        onChange={handleChangeTime}
+                <View style={styles.controller}>
+                    <View style={styles.tipContainer}>
+                        <Image
+                            source={waterdrop}
+                            style={styles.tipImage}
+                        />
+                        <Text style={styles.tipText}>
+                            {plant.water_tips}
+                        </Text>
+                    </View>
+                    <Text style={styles.alertLabel}>
+                        Choose the best time to be remembered:
+                    </Text>
+                    {showDatePicker && (
+                        <DateTimePicker
+                            value={selectedDateTime}
+                            mode="time"
+                            display="spinner"
+                            onChange={handleChangeTime}
+                        />
+                    )}
+                    {
+                        Platform.OS === 'android' && (
+                            <TouchableOpacity
+                                style={styles.dateTimePickerTextButton}
+                                onPress={handleopenDatetimePickerForAndroid}
+                            >
+                                <Text style={styles.dateTimePickerText}>
+                                    {`Set Reminder${format(selectedDateTime, 'HH:mm')} `}
+                                </Text>
+                            </TouchableOpacity>
+                        )
+                    }
+                    <Button
+                        title="Add plant"
+                        onPress={handleSave}
                     />
-                )}
-                {
-                    Platform.OS === 'android' && (
-                        <TouchableOpacity
-                            style={styles.dateTimePickerTextButton}
-                            onPress={handleopenDatetimePickerForAndroid}
-                        >
-                            <Text style={styles.dateTimePickerText}>
-                                {`Set Reminder${format(selectedDateTime, 'HH:mm')} `}
-                            </Text>
-                        </TouchableOpacity>
-                    )
-                }
-                <Button
-                    title="Add plant"
-                    onPress={handleSave}
-                />
-            </View>
+                </View>
 
-        </View>
+            </View>
+        </ScrollView>
     )
 }
 

@@ -60,7 +60,7 @@ export function Welcome() {
             </View>
         </SafeAreaView>
     )
-};
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 28,
-        fontWeight: 'bold',
         textAlign: 'center',
         color: colors.heading,
         marginTop: 38,
