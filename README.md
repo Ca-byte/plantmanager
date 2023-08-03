@@ -61,11 +61,7 @@ $ cd plantmanager
 # Install the dependencies
 $ yarn install
 
-# Make a copy of '.env.example' to '.env'
-# and set with YOUR environment variables.
-$ cp .env.example .env
-
-# Finally, run the api service in a development environment :)
+# Run the project
 $ yarn start
 
 # Well done, PlantManager is started!
