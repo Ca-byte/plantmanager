@@ -38,15 +38,15 @@ This project was developed using the following technologies:
 - [Expo](https://docs.expo.io/versions/latest/sdk/notifications/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-
 <br>
+
 
 ## :clipboard: Requirements
 
 Before starting you need :checkered_flag:, have installed the [Git](https://git-scm.com) e [Node](https://nodejs.org/en/).
 You will need to install [Expo CLI](https://docs.expo.io/versions/latest/sdk/notifications/) in you machine, you can either run the app in a simulator/emulator (iOS or Android) or scan the QR code with the Expo Go app on your physical device to see the app running live.
 
-
+<br>
 
 ## :keyboard: How to run the project ##
 
